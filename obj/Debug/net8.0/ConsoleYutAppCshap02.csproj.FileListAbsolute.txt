@@ -12,3 +12,4 @@ C:\Users\ryoii\source\repos\ConsoleYutApp\ConsoleYutAppCshap02\obj\Debug\net8.0\
 C:\Users\ryoii\source\repos\ConsoleYutApp\ConsoleYutAppCshap02\obj\Debug\net8.0\ConsoleYutAppCshap02.pdb
 C:\Users\ryoii\source\repos\ConsoleYutApp\ConsoleYutAppCshap02\obj\Debug\net8.0\ConsoleYutAppCshap02.genruntimeconfig.cache
 C:\Users\ryoii\source\repos\ConsoleYutApp\ConsoleYutAppCshap02\obj\Debug\net8.0\ref\ConsoleYutAppCshap02.dll
+C:\Users\ryoii\source\repos\ConsoleYutApp\ConsoleYutAppCshap02\obj\Debug\net8.0\ConsoleYutAppCshap02.sourcelink.json

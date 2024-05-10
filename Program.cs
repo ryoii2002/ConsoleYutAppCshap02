@@ -43,49 +43,59 @@ namespace ConsoleYutAppCshap02
                     Console.WriteLine($"===========================================");
                     Console.WriteLine($"당신의 차례입니다!");
                     Console.WriteLine($"윷을 던지려면 1을 입력하세요. ");
-                    roll();                    //윷 던지기
 
-                    userMovePoint += totalSum; //지금까지 이동한 칸수의 총합 + 방금 진행한 칸수
-
-                    ////////////말의 위치 저장
-                    if (userShortcut == 0)
+                    while (true)
                     {
-                        userBasicBoard += totalSum;
-                        userShortcutBoardFirst = 0;
-                        userShortcutBoardSecond = 0;
 
-                    }
-                    else if (userShortcut == 1 && userShortcutCount == 1) //1번 지름길 이용중이면서 지름길 이용횟수 1회,
-                    {
-                        userBasicBoard = 0;
-                        userShortcutBoardFirst += totalSum;
-                        userShortcutBoardSecond = 0;
-                        if (userShortcutBoardFirst > 5) // 1번 지름길의 끝을 넘어 가면 Basic코스도 넣어줌.
+                        roll();                    //윷 던지기
+
+                        userMovePoint += totalSum; //지금까지 이동한 칸수의 총합 + 방금 진행한 칸수
+
+                        ////////////말의 위치 저장
+                        if (userShortcut == 0)
                         {
-                            userBasicBoard = userShortcutBoardFirst - 5 + 14;
+                            userBasicBoard += totalSum;
+                            userShortcutBoardFirst = 0;
+                            userShortcutBoardSecond = 0;
+
+                        }
+                        else if (userShortcut == 1 && userShortcutCount == 1) //1번 지름길 이용중이면서 지름길 이용횟수 1회,
+                        {
+                            userBasicBoard = 0;
+                            userShortcutBoardFirst += totalSum;
+                            userShortcutBoardSecond = 0;
+                            if (userShortcutBoardFirst > 5) // 1번 지름길의 끝을 넘어 가면 Basic코스도 넣어줌.
+                            {
+                                userBasicBoard = userShortcutBoardFirst - 5 + 14;
+                            }
+
+                        }
+                        else if (userShortcut == 1 && userShortcutCount == 2) //1번 지름길 이용중이면서 두번째 지름길도 진입함.
+                        {
+                            if (userShortcutBoardFirst == 3)
+                            {
+                                userShortcutBoardSecond = 3;
+                            }
+                            userBasicBoard = 0;
+                            userShortcutBoardFirst = 0;
+                            userShortcutBoardSecond += totalSum;
+                        }
+                        else if (userShortcut == 2) // 2번 지름길 이용중
+                        {
+                            userBasicBoard = 0;
+                            userShortcutBoardFirst = 0;
+                            userShortcutBoardSecond += totalSum;
+                        }
+                        else { Console.WriteLine($"오류당!!"); }
+
+                        /////////////////////
+                        if (!is_catch_available(nowPlayerName))//상대방 말 잡으면 계속 던짐.
+                        {
+                            break;
                         }
 
                     }
-                    else if (userShortcut == 1 && userShortcutCount == 2) //1번 지름길 이용중이면서 두번째 지름길도 진입함.
-                    {
-                        if (userShortcutBoardFirst == 3)
-                        {
-                            userShortcutBoardSecond = 3;
-                        }
-                        userBasicBoard = 0;
-                        userShortcutBoardFirst = 0;
-                        userShortcutBoardSecond += totalSum;
-                    }
-                    else if (userShortcut == 2) // 2번 지름길 이용중
-                    {
-                        userBasicBoard = 0;
-                        userShortcutBoardFirst = 0;
-                        userShortcutBoardSecond += totalSum;
-                    }
-                    else { Console.WriteLine($"오류당!!"); }
-
-                    /////////////////////
-                    is_catch_available(nowPlayerName); //상대방 말 잡기
+                    
 
 
 
@@ -122,48 +132,55 @@ namespace ConsoleYutAppCshap02
                     Console.WriteLine($"===========================================");
                     Console.WriteLine($"컴퓨터의 차례입니다!");
                     Console.WriteLine($"윷을 던지게 하려면 1을 입력하세요. ");
-                    roll();                    //윷 던지기
-                    comMovePoint += totalSum; //지금까지 이동한 칸수의 총합 + 방금 진행한 칸수
-                    ////////////말의 위치 저장
-                    if (comShortcut == 0)
+                    while(true)
                     {
-                        comBasicBoard += totalSum;
-                        comShortcutBoardFirst = 0;
-                        comShortcutBoardSecond = 0;
-
-                    }
-                    else if (comShortcut == 1 && comShortcutCount == 1) //1번 지름길 이용중이면서 지름길 이용횟수 1회,
-                    {
-                        comBasicBoard = 0;
-                        comShortcutBoardFirst += totalSum;
-                        comShortcutBoardSecond = 0;
-                        if (comShortcutBoardFirst > 5) // 1번 지름길의 끝을 넘어 가면 Basic코스도 넣어줌.
+                        roll();                    //윷 던지기
+                        comMovePoint += totalSum; //지금까지 이동한 칸수의 총합 + 방금 진행한 칸수
+                                                  ////////////말의 위치 저장
+                        if (comShortcut == 0)
                         {
-                            comBasicBoard = comShortcutBoardFirst - 5 + 14;
+                            comBasicBoard += totalSum;
+                            comShortcutBoardFirst = 0;
+                            comShortcutBoardSecond = 0;
+
+                        }
+                        else if (comShortcut == 1 && comShortcutCount == 1) //1번 지름길 이용중이면서 지름길 이용횟수 1회,
+                        {
+                            comBasicBoard = 0;
+                            comShortcutBoardFirst += totalSum;
+                            comShortcutBoardSecond = 0;
+                            if (comShortcutBoardFirst > 5) // 1번 지름길의 끝을 넘어 가면 Basic코스도 넣어줌.
+                            {
+                                comBasicBoard = comShortcutBoardFirst - 5 + 14;
+                            }
+
+                        }
+                        else if (comShortcut == 1 && comShortcutCount == 2) //1번 지름길 이용중이면서 두번째 지름길도 진입함.
+                        {
+                            if (comShortcutBoardFirst == 3)
+                            {
+                                comShortcutBoardSecond = 3;
+                            }
+                            comBasicBoard = 0;
+                            comShortcutBoardFirst = 0;
+                            comShortcutBoardSecond += totalSum;
+                        }
+                        else if (comShortcut == 2) // 2번 지름길 이용중
+                        {
+                            comBasicBoard = 0;
+                            comShortcutBoardFirst = 0;
+                            comShortcutBoardSecond += totalSum;
+                        }
+                        else { Console.WriteLine($"오류당!!"); }
+
+                        /////////////////////
+                        if (!is_catch_available(nowPlayerName))//상대방 말 잡으면 계속 던짐.
+                        {
+                            break;
                         }
 
                     }
-                    else if (comShortcut == 1 && comShortcutCount == 2) //1번 지름길 이용중이면서 두번째 지름길도 진입함.
-                    {
-                        if (comShortcutBoardFirst == 3)
-                        {
-                            comShortcutBoardSecond = 3;
-                        }
-                        comBasicBoard = 0;
-                        comShortcutBoardFirst = 0;
-                        comShortcutBoardSecond += totalSum;
-                    }
-                    else if (comShortcut == 2) // 2번 지름길 이용중
-                    {
-                        comBasicBoard = 0;
-                        comShortcutBoardFirst = 0;
-                        comShortcutBoardSecond += totalSum;
-                    }
-                    else { Console.WriteLine($"오류당!!"); }
-
-                    /////////////////////
-                    ///
-                    is_catch_available(nowPlayerName); //상대방 말 잡기
+                    
 
 
                     if (is_shortcut_available(comMovePoint, nowPlayerName))
@@ -305,11 +322,11 @@ namespace ConsoleYutAppCshap02
         }
 
         //5)윷이 나온만큼 이동했을때, 상대방 말을 잡을 수 있는 상태인지 판별하는 함수
-        public static void is_catch_available(string PlayerName)
+        public static bool is_catch_available(string PlayerName)
         {
-           
-            if((userBasicBoard != 0 && comBasicBoard != 0 && userBasicBoard == comBasicBoard) 
-                || (userShortcutBoardFirst != 0 && comShortcutBoardFirst != 0 && userShortcutBoardFirst == comShortcutBoardFirst) 
+
+            if ((userBasicBoard != 0 && comBasicBoard != 0 && userBasicBoard == comBasicBoard)
+                || (userShortcutBoardFirst != 0 && comShortcutBoardFirst != 0 && userShortcutBoardFirst == comShortcutBoardFirst)
                 || (userShortcutBoardSecond != 0 && comShortcutBoardSecond != 0 && userShortcutBoardSecond == comShortcutBoardSecond))
             {
                 if (PlayerName == "사용자")
@@ -321,7 +338,9 @@ namespace ConsoleYutAppCshap02
                     comShortcutBoardFirst = 0;
                     comShortcutBoardSecond = 0;
                     comMovePoint = 0;
-                    Console.WriteLine($"컴퓨터 말을 잡았습니다.===============================================");
+                    Console.WriteLine($"상대방 말을 잡았습니다! 윷을 한 번 더 던집니다! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+                    Console.WriteLine($"당신의 차례입니다! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+                    Console.WriteLine($"윷을 던지려면 1을 입력하세요! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
                 }
                 else if (PlayerName == "컴퓨터")
                 {
@@ -332,9 +351,16 @@ namespace ConsoleYutAppCshap02
                     userShortcutBoardFirst = 0;
                     userShortcutBoardSecond = 0;
                     userMovePoint = 0;
-                    Console.WriteLine($"사용자 말을 잡았습니다.===============================================");
+                    Console.WriteLine($"당신의 말이 잡혔습니다! 컴퓨터가 윷을 한 번 더 던집니다! ???????????????????????????????????????????");
+                    Console.WriteLine($"컴퓨터의 차례입니다! ???????????????????????????????????????????");
+                    Console.WriteLine($"윷을 던지게 하려면 1을 입력하세요! ???????????????????????????????????????????");
                 }
                 else { Console.WriteLine($"오류"); }
+                return true;
+            }
+            else 
+            {
+                return false;
             }
 
         }
