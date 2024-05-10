@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ConsoleYutAppCshap02")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5c6bd9de90f214789ce78f250c5bd604a252b1af")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f7361b974a0d8ecc46d63a5c76703bb012cc33ac")]
 [assembly: System.Reflection.AssemblyProductAttribute("ConsoleYutAppCshap02")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ConsoleYutAppCshap02")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

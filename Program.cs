@@ -29,9 +29,7 @@ namespace ConsoleYutAppCshap02
             bool gameRunnig = true;
             string nowPlayerName = "사용자"; //사용자, 컴퓨터.
 
-            
             int userEndPoint;  //사용자가 앞으로 가야할 칸 수.
-            
             
             int comEndPoint;   //컴퓨터가 앞으로 가야할 칸 수.
 
@@ -96,9 +94,6 @@ namespace ConsoleYutAppCshap02
 
                     }
                     
-
-
-
                     if (is_shortcut_available(userMovePoint, nowPlayerName))
                     {
                         Console.WriteLine($"지름길로 가자.%%%%%%%%%%%%{userTotalPoint}%{userMovePoint}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
@@ -178,10 +173,7 @@ namespace ConsoleYutAppCshap02
                         {
                             break;
                         }
-
                     }
-                    
-
 
                     if (is_shortcut_available(comMovePoint, nowPlayerName))
                     {
@@ -316,9 +308,78 @@ namespace ConsoleYutAppCshap02
         }
 
         //4)지름길 사용 가능한 위치에서 빽도가 나왔을때, 이미 줄어든 가야 할 칸수를 다시 보상해주는 함수.
-        private void back_shortcut()
+        private void back_shortcut(string playerName) // 적용해야함.
         {
-
+            if (playerName == "사용자")
+            {
+                if (userShortcut == 1) // 1번 지름길 이용 중
+                {
+                    // 지름길의 시작 부분보다 앞으로 갔는지 확인
+                    if (userShortcutBoardFirst > 0)
+                    {
+                        userShortcutBoardFirst--;
+                    }
+                    else // 지름길 시작 부분에서 빽도를 던졌을 경우
+                    {
+                        // 주요 경로로 돌아감
+                        userShortcut = 0;
+                        userBasicBoard -= 1;
+                    }
+                }
+                else if (userShortcut == 2) // 2번 지름길 이용 중
+                {
+                    if (userShortcutBoardSecond > 0)
+                    {
+                        userShortcutBoardSecond--;
+                    }
+                    else
+                    {
+                        userShortcut = 0;
+                        userBasicBoard -= 1;
+                    }
+                }
+                else // 지름길을 사용하지 않고 기본 경로에 있을 때
+                {
+                    if (userBasicBoard > 0)
+                    {
+                        userBasicBoard--;
+                    }
+                }
+            }
+            else if (playerName == "컴퓨터")
+            {
+                if (comShortcut == 1)
+                {
+                    if (comShortcutBoardFirst > 0)
+                    {
+                        comShortcutBoardFirst--;
+                    }
+                    else
+                    {
+                        comShortcut = 0;
+                        comBasicBoard -= 1;
+                    }
+                }
+                else if (comShortcut == 2)
+                {
+                    if (comShortcutBoardSecond > 0)
+                    {
+                        comShortcutBoardSecond--;
+                    }
+                    else
+                    {
+                        comShortcut = 0;
+                        comBasicBoard -= 1;
+                    }
+                }
+                else
+                {
+                    if (comBasicBoard > 0)
+                    {
+                        comBasicBoard--;
+                    }
+                }
+            }
         }
 
         //5)윷이 나온만큼 이동했을때, 상대방 말을 잡을 수 있는 상태인지 판별하는 함수
